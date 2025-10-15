@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaquetas Rio Cuarto - Diseño de Autor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1200x800/F3E8EA/FFFFFF?text=Productos+Hechos+con+Amor');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-pink-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-pink-600 font-bold text-lg">
+                    CR
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#inicio" class="text-gray-600 hover:text-pink-500 transition duration-300">Inicio</a>
+                <a href="#productos" class="text-gray-600 hover:text-pink-500 transition duration-300">Productos</a>
+                <a href="#nosotros" class="text-gray-600 hover:text-pink-500 transition duration-300">Sobre Nosotros</a>
+                <a href="#contacto" class="text-gray-600 hover:text-pink-500 transition duration-300">Contacto</a>
+            </div>
+             <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#inicio" class="block py-2 px-4 text-sm hover:bg-pink-100">Inicio</a>
+            <a href="#productos" class="block py-2 px-4 text-sm hover:bg-pink-100">Productos</a>
+            <a href="#nosotros" class="block py-2 px-4 text-sm hover:bg-pink-100">Sobre Nosotros</a>
+            <a href="#contacto" class="block py-2 px-4 text-sm hover:bg-pink-100">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-bg h-[60vh] md:h-[80vh] flex items-center justify-center text-white">
+            <div class="text-center bg-black bg-opacity-40 p-8 rounded-lg">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Chaquetas Rio Cuarto</h1>
+                <p class="text-xl md:text-2xl mb-4">Diseños Únicos</p>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Confección de chaquetas, ponchitos, guardapolvos para jardín de infantes, delantales de cocina, cofias, cubrebocas y mucho más. ¡A medida y por encargo!</p>
+                <a href="#productos" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Ver Productos</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="nosotros" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-6 text-gray-700">Pasión por el Diseño de Autor</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">
+                    En Chaquetas Rio Cuarto, cada pieza es única. Nos dedicamos a la confección de una amplia variedad de productos textiles, desde indumentaria para los más chicos hasta accesorios para el día a día. Creemos en el valor de lo artesanal y ponemos dedicación en cada detalle para ofrecerte artículos originales y de calidad.
+                </p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="productos" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-700">Nuestros Productos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/D4A5A5/FFFFFF?text=Chalecos+y+Guardapolvos" alt="Ropa para niños" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Indumentaria Infantil</h3>
+                            <p class="text-gray-600">Chalecos polar súper abrigados y guardapolvos de jardín personalizados. ¡Diseños divertidos para los más peques!</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/A8D8EA/FFFFFF?text=Kits+Materos" alt="Kits materos" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Accesorios Materos</h3>
+                            <p class="text-gray-600">El regalo ideal. Kits materos completos con bolsos, yerberas y necessaires. Diseños únicos y prácticos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/C8B6A6/FFFFFF?text=Tejidos+Nórdicos" alt="Tejidos Nórdicos" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Tejidos y Mantas</h3>
+                            <p class="text-gray-600">Mantas y bufandas de vellón XXL estilo nórdico. Suavidad y calidez para decorar tu hogar o para regalar.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/B4CFB0/FFFFFF?text=Bolsas+Terapéuticas" alt="Bolsas Terapéuticas" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Bienestar y Hogar</h3>
+                            <p class="text-gray-600">Bolsas terapéuticas aromatizadas con semillas. Ideales para aliviar tensiones y relajarse.</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/87AAAA/FFFFFF?text=Bolsos+y+Mochilas" alt="Bolsos y mochilas" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Bolsos y Accesorios</h3>
+                            <p class="text-gray-600">Mochilas, bolsos materos y porta celulares. Complementos perfectos para tu rutina, con mucho estilo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/600x400/E9A8A9/FFFFFF?text=¡Y+mucho+más!" alt="Más productos" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">¡Y mucho más!</h3>
+                            <p class="text-gray-600">Realizamos delantales de cocina, cofias, escarapelas y más. ¡Consultanos por pedidos personalizados!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-6 text-gray-700">¿Te gustó algo?</h2>
+                <p class="max-w-2xl mx-auto text-gray-600 mb-8">
+                    ¡Hacé tu pedido o consulta! Seguinos en nuestras redes sociales para ver todas las novedades y enterarte de las próximas ferias.
+                </p>
+                <a href="https://www.instagram.com/chaquetasriocuarto" target="_blank" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 21.828a2 2 0 002.828 0l5.657-5.657a2 2 0 000-2.828l-5.657-5.657a2 2 0 00-2.828 0l-5.657 5.657a2 2 0 000 2.828l5.657 5.657z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+                    Seguinos en Instagram
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Chaquetas Rio Cuarto. Todos los derechos reservados.</p>
+            <p class="text-sm text-gray-400">Diseño de autor en Río Cuarto, Córdoba.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script for mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
+
