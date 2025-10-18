@@ -13,9 +13,20 @@
             font-family: 'Poppins', sans-serif;
         }
         .hero-bg {
-            background-image: url('https://placehold.co/1200x800/F3E8EA/FFFFFF?text=Productos+Hechos+con+Amor');
+            background-image: url('images/chaquetasriocuarto.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+        }
+        /* Styles for scroll animation */
+        .product-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .product-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -78,8 +89,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     
                     <!-- Product Card 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/D4A5A5/FFFFFF?text=Chalecos+y+Guardapolvos" alt="Ropa para niños" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/chalecos" alt="Ropa para niños" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Indumentaria Infantil</h3>
                             <p class="text-gray-600">Chalecos polar súper abrigados y guardapolvos de jardín personalizados. ¡Diseños divertidos para los más peques!</p>
@@ -87,8 +98,8 @@
                     </div>
 
                     <!-- Product Card 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/A8D8EA/FFFFFF?text=Kits+Materos" alt="Kits materos" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/matero" alt="Kits materos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Accesorios Materos</h3>
                             <p class="text-gray-600">El regalo ideal. Kits materos completos con bolsos, yerberas y necessaires. Diseños únicos y prácticos.</p>
@@ -96,8 +107,8 @@
                     </div>
 
                     <!-- Product Card 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/C8B6A6/FFFFFF?text=Tejidos+Nórdicos" alt="Tejidos Nórdicos" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/nordicas" alt="Tejidos Nórdicos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Tejidos y Mantas</h3>
                             <p class="text-gray-600">Mantas y bufandas de vellón XXL estilo nórdico. Suavidad y calidez para decorar tu hogar o para regalar.</p>
@@ -105,8 +116,8 @@
                     </div>
                     
                     <!-- Product Card 4 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/B4CFB0/FFFFFF?text=Bolsas+Terapéuticas" alt="Bolsas Terapéuticas" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/terapeuticas" alt="Bolsas Terapéuticas" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Bienestar y Hogar</h3>
                             <p class="text-gray-600">Bolsas terapéuticas aromatizadas con semillas. Ideales para aliviar tensiones y relajarse.</p>
@@ -114,8 +125,8 @@
                     </div>
 
                     <!-- Product Card 5 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/87AAAA/FFFFFF?text=Bolsos+y+Mochilas" alt="Bolsos y mochilas" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/mochilas" alt="Bolsos y mochilas" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Bolsos y Accesorios</h3>
                             <p class="text-gray-600">Mochilas, bolsos materos y porta celulares. Complementos perfectos para tu rutina, con mucho estilo.</p>
@@ -123,8 +134,8 @@
                     </div>
 
                     <!-- Product Card 6 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="https://placehold.co/600x400/E9A8A9/FFFFFF?text=¡Y+mucho+más!" alt="Más productos" class="w-full h-56 object-cover">
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/mas" alt="Más productos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">¡Y mucho más!</h3>
                             <p class="text-gray-600">Realizamos delantales de cocina, cofias, escarapelas y más. ¡Consultanos por pedidos personalizados!</p>
@@ -143,9 +154,8 @@
                     ¡Hacé tu pedido o consulta! Seguinos en nuestras redes sociales para ver todas las novedades y enterarte de las próximas ferias.
                 </p>
                 <a href="https://www.instagram.com/chaquetasriocuarto" target="_blank" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 21.828a2 2 0 002.828 0l5.657-5.657a2 2 0 000-2.828l-5.657-5.657a2 2 0 00-2.828 0l-5.657 5.657a2 2 0 000 2.828l5.657 5.657z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    <svg class="inline-block h-6 w-6 mr-2 align-middle" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c-4.04.055-4.496.02-6.138.097C4.6.262 3.926.42 3.37.666c-1.12.502-1.92 1.3-2.422 2.422C.666 3.926.498 4.6.42 6.177c-.077 1.642-.042 2.098-.097 6.138C.267 13.9.42 14.574.666 15.13c.502 1.12 1.3 1.92 2.422 2.422.556.246 1.23.418 2.787.495 1.642.077 2.098.042 6.138.097s4.496.02 6.138-.097c1.557-.077 2.23-.249 2.787-.495 1.12-.502 1.92-1.3 2.422-2.422.246-.556.418-1.23.495-2.787.077-1.642.042-2.098.097-6.138s-.02-4.496.097-6.138c-.077-1.557-.249-2.23-.495-2.787C21.08 1.966 20.28 1.166 19.16.666c-.556-.246-1.23-.418-2.787-.495C14.72.097 14.264.055 12.315 2zM8 12a4 4 0 118 0 4 4 0 01-8 0zm4-6a6 6 0 100 12 6 6 0 000-12zm4.75 1.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z" clip-rule="evenodd" />
                     </svg>
                     Seguinos en Instagram
                 </a>
@@ -161,12 +171,37 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5493586547184" target="_blank" class="fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.885-.002 2.024.63 3.965 1.739 5.619l-1.192 4.359 4.423-1.157zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
+
     <script>
         // Script for mobile menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Script for scroll animations
+        const productCards = document.querySelectorAll('.product-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once it's visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        productCards.forEach(card => {
+            observer.observe(card);
         });
     </script>
 
