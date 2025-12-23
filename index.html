@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,53 +9,159 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo_circle.png" type="image/png">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
         }
+
         .hero-bg {
-            background-image: url('images/chaquetasriocuarto.jpg');
+            background-image: url('images/matero');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
+
         /* Styles for scroll animation */
         .product-card {
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
+
         .product-card.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            color: #1f2937;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .group:hover .carousel-btn {
+            opacity: 1;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body class="bg-pink-50 text-gray-800">
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-pink-600 font-bold text-lg">
-                    CR
-                </div>
+                <img src="images/logo_circle.png" alt="Logo Chaquetas Rio Cuarto"
+                    class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover">
             </a>
             <div class="hidden md:flex items-center space-x-6">
                 <a href="#inicio" class="text-gray-600 hover:text-pink-500 transition duration-300">Inicio</a>
+                <a href="#jardines" class="text-gray-600 hover:text-pink-500 transition duration-300">Jardines</a>
                 <a href="#productos" class="text-gray-600 hover:text-pink-500 transition duration-300">Productos</a>
                 <a href="#nosotros" class="text-gray-600 hover:text-pink-500 transition duration-300">Sobre Nosotros</a>
                 <a href="#contacto" class="text-gray-600 hover:text-pink-500 transition duration-300">Contacto</a>
             </div>
-             <div class="md:hidden">
+            <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#inicio" class="block py-2 px-4 text-sm hover:bg-pink-100">Inicio</a>
+            <a href="#jardines" class="block py-2 px-4 text-sm hover:bg-pink-100">Jardines</a>
             <a href="#productos" class="block py-2 px-4 text-sm hover:bg-pink-100">Productos</a>
             <a href="#nosotros" class="block py-2 px-4 text-sm hover:bg-pink-100">Sobre Nosotros</a>
             <a href="#contacto" class="block py-2 px-4 text-sm hover:bg-pink-100">Contacto</a>
@@ -67,8 +174,12 @@
             <div class="text-center bg-black bg-opacity-40 p-8 rounded-lg">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Chaquetas Rio Cuarto</h1>
                 <p class="text-xl md:text-2xl mb-4">Diseños Únicos</p>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Confección de chaquetas, ponchitos, guardapolvos para jardín de infantes, delantales de cocina, cofias, cubrebocas y mucho más. ¡A medida y por encargo!</p>
-                <a href="#productos" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Ver Productos</a>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Confección de chaquetas, ponchitos, guardapolvos
+                    para jardín de infantes, delantales de cocina, cofias, cubrebocas y mucho más. ¡A medida y por
+                    encargo!</p>
+                <a href="#productos"
+                    class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Ver
+                    Productos</a>
             </div>
         </section>
 
@@ -77,8 +188,94 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-6 text-gray-700">Pasión por el Diseño de Autor</h2>
                 <p class="max-w-3xl mx-auto text-gray-600">
-                    En Chaquetas Rio Cuarto, cada pieza es única. Nos dedicamos a la confección de una amplia variedad de productos textiles, desde indumentaria para los más chicos hasta accesorios para el día a día. Creemos en el valor de lo artesanal y ponemos dedicación en cada detalle para ofrecerte artículos originales y de calidad.
+                    En Chaquetas Rio Cuarto, cada pieza es única. Nos dedicamos a la confección de una amplia variedad
+                    de productos textiles, desde indumentaria para los más chicos hasta accesorios para el día a día.
+                    Creemos en el valor de lo artesanal y ponemos dedicación en cada detalle para ofrecerte artículos
+                    originales y de calidad.
                 </p>
+            </div>
+        </section>
+
+        <!-- Jardines Section -->
+        <section id="jardines" class="py-20 bg-pink-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-700">Jardines Destacados</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Encontrá el guardapolvo de tu jardín.
+                    Diseños exclusivos y personalizados para cada institución.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <!-- Jardin Card 1 -->
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/jardines/Bernardino_Rivadavia.png" alt="Jardín Bernardino Rivadavia"
+                            class="w-full h-64 object-cover cursor-pointer"
+                            onclick="openModal(['images/jardines/Bernardino_Rivadavia.png'], 0)">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Jardín Bernardino Rivadavia</h3>
+                        </div>
+                    </div>
+
+                    <!-- Jardin Card 2 -->
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/jardines/Indio_Felipe_Rosas.png" alt="Jardín Indio Felipe Rosas"
+                            class="w-full h-64 object-cover cursor-pointer"
+                            onclick="openModal(['images/jardines/Indio_Felipe_Rosas.png'], 0)">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Jardín Indio Felipe Rosas</h3>
+                        </div>
+                    </div>
+
+                    <!-- Jardin Card 3 (Racedo Carousel) -->
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 relative group">
+                        <div class="carousel-container" id="racedo-carousel">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="images/jardines/Racedo.png" alt="Jardín Racedo"
+                                        class="w-full h-64 object-cover cursor-pointer"
+                                        onclick="openModal(['images/jardines/Racedo.png', 'images/jardines/Racedo2.png'], 0)">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/jardines/Racedo2.png" alt="Jardín Racedo Opción 2"
+                                        class="w-full h-64 object-cover cursor-pointer"
+                                        onclick="openModal(['images/jardines/Racedo.png', 'images/jardines/Racedo2.png'], 1)">
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev"
+                                onclick="moveCarousel(-1, 'racedo-carousel')">&#10094;</button>
+                            <button class="carousel-btn next"
+                                onclick="moveCarousel(1, 'racedo-carousel')">&#10095;</button>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Jardín Racedo</h3>
+                            <p class="text-sm text-gray-500">(Desliza para ver más opciones)</p>
+                        </div>
+                    </div>
+
+                    <!-- Jardin Card 5 -->
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/jardines/Sarmiento.png" alt="Jardín Sarmiento"
+                            class="w-full h-64 object-cover cursor-pointer"
+                            onclick="openModal(['images/jardines/Sarmiento.png'], 0)">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Jardín Sarmiento</h3>
+                        </div>
+                    </div>
+
+                    <!-- Jardin Card 6 -->
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="images/jardines/Vecinal_Golf.png" alt="Jardín Vecinal Golf"
+                            class="w-full h-64 object-cover cursor-pointer"
+                            onclick="openModal(['images/jardines/Vecinal_Golf.png'], 0)">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Jardín Vecinal Golf</h3>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -87,58 +284,70 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12 text-gray-700">Nuestros Productos</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    
+
                     <!-- Product Card 1 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/chalecos" alt="Ropa para niños" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Indumentaria Infantil</h3>
-                            <p class="text-gray-600">Chalecos polar súper abrigados y guardapolvos de jardín personalizados. ¡Diseños divertidos para los más peques!</p>
+                            <p class="text-gray-600">Chalecos polar súper abrigados y guardapolvos de jardín
+                                personalizados. ¡Diseños divertidos para los más peques!</p>
                         </div>
                     </div>
 
                     <!-- Product Card 2 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/matero" alt="Kits materos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Accesorios Materos</h3>
-                            <p class="text-gray-600">El regalo ideal. Kits materos completos con bolsos, yerberas y necessaires. Diseños únicos y prácticos.</p>
+                            <p class="text-gray-600">El regalo ideal. Kits materos completos con bolsos, yerberas y
+                                necessaires. Diseños únicos y prácticos.</p>
                         </div>
                     </div>
 
                     <!-- Product Card 3 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/nordicas" alt="Tejidos Nórdicos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Tejidos y Mantas</h3>
-                            <p class="text-gray-600">Mantas y bufandas de vellón XXL estilo nórdico. Suavidad y calidez para decorar tu hogar o para regalar.</p>
+                            <p class="text-gray-600">Mantas y bufandas de vellón XXL estilo nórdico. Suavidad y calidez
+                                para decorar tu hogar o para regalar.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Product Card 4 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/terapeuticas" alt="Bolsas Terapéuticas" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Bienestar y Hogar</h3>
-                            <p class="text-gray-600">Bolsas terapéuticas aromatizadas con semillas. Ideales para aliviar tensiones y relajarse.</p>
+                            <p class="text-gray-600">Bolsas terapéuticas aromatizadas con semillas. Ideales para aliviar
+                                tensiones y relajarse.</p>
                         </div>
                     </div>
 
                     <!-- Product Card 5 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/mochilas" alt="Bolsos y mochilas" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Bolsos y Accesorios</h3>
-                            <p class="text-gray-600">Mochilas, bolsos materos y porta celulares. Complementos perfectos para tu rutina, con mucho estilo.</p>
+                            <p class="text-gray-600">Mochilas, bolsos materos y porta celulares. Complementos perfectos
+                                para tu rutina, con mucho estilo.</p>
                         </div>
                     </div>
 
                     <!-- Product Card 6 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div
+                        class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
                         <img src="images/mas" alt="Más productos" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">¡Y mucho más!</h3>
-                            <p class="text-gray-600">Realizamos delantales de cocina, cofias, escarapelas y más. ¡Consultanos por pedidos personalizados!</p>
+                            <p class="text-gray-600">Realizamos delantales de cocina, cofias, escarapelas y más.
+                                ¡Consultanos por pedidos personalizados!</p>
                         </div>
                     </div>
 
@@ -151,11 +360,16 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-6 text-gray-700">¿Te gustó algo?</h2>
                 <p class="max-w-2xl mx-auto text-gray-600 mb-8">
-                    ¡Hacé tu pedido o consulta! Seguinos en nuestras redes sociales para ver todas las novedades y enterarte de las próximas ferias.
+                    ¡Hacé tu pedido o consulta! Seguinos en nuestras redes sociales para ver todas las novedades y
+                    enterarte de las próximas ferias.
                 </p>
-                <a href="https://www.instagram.com/chaquetasriocuarto" target="_blank" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
-                    <svg class="inline-block h-6 w-6 mr-2 align-middle" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.315 2c-4.04.055-4.496.02-6.138.097C4.6.262 3.926.42 3.37.666c-1.12.502-1.92 1.3-2.422 2.422C.666 3.926.498 4.6.42 6.177c-.077 1.642-.042 2.098-.097 6.138C.267 13.9.42 14.574.666 15.13c.502 1.12 1.3 1.92 2.422 2.422.556.246 1.23.418 2.787.495 1.642.077 2.098.042 6.138.097s4.496.02 6.138-.097c1.557-.077 2.23-.249 2.787-.495 1.12-.502 1.92-1.3 2.422-2.422.246-.556.418-1.23.495-2.787.077-1.642.042-2.098.097-6.138s-.02-4.496.097-6.138c-.077-1.557-.249-2.23-.495-2.787C21.08 1.966 20.28 1.166 19.16.666c-.556-.246-1.23-.418-2.787-.495C14.72.097 14.264.055 12.315 2zM8 12a4 4 0 118 0 4 4 0 01-8 0zm4-6a6 6 0 100 12 6 6 0 000-12zm4.75 1.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z" clip-rule="evenodd" />
+                <a href="https://www.instagram.com/chaquetasriocuarto" target="_blank"
+                    class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    <svg class="inline-block h-6 w-6 mr-2 align-middle" fill="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c-4.04.055-4.496.02-6.138.097C4.6.262 3.926.42 3.37.666c-1.12.502-1.92 1.3-2.422 2.422C.666 3.926.498 4.6.42 6.177c-.077 1.642-.042 2.098-.097 6.138C.267 13.9.42 14.574.666 15.13c.502 1.12 1.3 1.92 2.422 2.422.556.246 1.23.418 2.787.495 1.642.077 2.098.042 6.138.097s4.496.02 6.138-.097c1.557-.077 2.23-.249 2.787-.495 1.12-.502 1.92-1.3 2.422-2.422.246-.556.418-1.23.495-2.787.077-1.642.042-2.098.097-6.138s-.02-4.496.097-6.138c-.077-1.557-.249-2.23-.495-2.787C21.08 1.966 20.28 1.166 19.16.666c-.556-.246-1.23-.418-2.787-.495C14.72.097 14.264.055 12.315 2zM8 12a4 4 0 118 0 4 4 0 01-8 0zm4-6a6 6 0 100 12 6 6 0 000-12zm4.75 1.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"
+                            clip-rule="evenodd" />
                     </svg>
                     Seguinos en Instagram
                 </a>
@@ -172,39 +386,136 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5493586547184" target="_blank" class="fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50">
+    <a href="https://wa.me/5493586547184" target="_blank"
+        class="fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.885-.002 2.024.63 3.965 1.739 5.619l-1.192 4.359 4.423-1.157zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.885-.002 2.024.63 3.965 1.739 5.619l-1.192 4.359 4.423-1.157zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
         </svg>
     </a>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="modal-close" onclick="closeModal(event)">&times;</span>
+        <div class="relative max-w-4xl w-full flex justify-center items-center">
+            <button id="modal-prev" class="carousel-btn prev hidden" onclick="moveModalCarousel(-1)">&#10094;</button>
+            <img class="modal-content" id="modalImage">
+            <button id="modal-next" class="carousel-btn next hidden" onclick="moveModalCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+
     <script>
-        // Script for mobile menu
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Script for mobile menu
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        // Script for scroll animations
-        const productCards = document.querySelectorAll('.product-card');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Stop observing once it's visible
+            // Script for scroll animations
+            const productCards = document.querySelectorAll('.product-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Advanced Parallax Effect
+            window.addEventListener('scroll', () => {
+                const hero = document.querySelector('.hero-bg');
+                if (hero) {
+                    const scrollPosition = window.pageYOffset;
+                    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
                 }
             });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
         });
 
-        productCards.forEach(card => {
-            observer.observe(card);
-        });
+        // Carousel Logic for Cards
+        function moveCarousel(direction, carouselId) {
+            const container = document.getElementById(carouselId);
+            if (!container) return;
+
+            const track = container.querySelector('.carousel-track');
+            const slides = container.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+
+            let currentSlide = parseInt(container.dataset.currentSlide || 0);
+            let newSlide = currentSlide + direction;
+
+            if (newSlide < 0) newSlide = totalSlides - 1;
+            if (newSlide >= totalSlides) newSlide = 0;
+
+            container.dataset.currentSlide = newSlide;
+            track.style.transform = `translateX(-${newSlide * 100}%)`;
+        }
+
+        // Modal Logic
+        let currentModalImages = [];
+        let currentModalIndex = 0;
+
+        function getModalElements() {
+            return {
+                modal: document.getElementById('imageModal'),
+                modalImg: document.getElementById('modalImage'),
+                modalPrev: document.getElementById('modal-prev'),
+                modalNext: document.getElementById('modal-next')
+            };
+        }
+
+        function openModal(images, index) {
+            const { modal, modalImg, modalPrev, modalNext } = getModalElements();
+            if (!modal || !modalImg) return;
+
+            modal.style.display = "flex";
+            currentModalImages = images;
+            currentModalIndex = index;
+            updateModalImage();
+
+            if (images.length > 1) {
+                if (modalPrev) modalPrev.classList.remove('hidden');
+                if (modalNext) modalNext.classList.remove('hidden');
+            } else {
+                if (modalPrev) modalPrev.classList.add('hidden');
+                if (modalNext) modalNext.classList.add('hidden');
+            }
+        }
+
+        function closeModal(event) {
+            const { modal } = getModalElements();
+            if (!modal) return;
+
+            if (event.target === modal || event.target.classList.contains('modal-close')) {
+                modal.style.display = "none";
+            }
+        }
+
+        function moveModalCarousel(direction) {
+            event.stopPropagation();
+            currentModalIndex += direction;
+            if (currentModalIndex < 0) currentModalIndex = currentModalImages.length - 1;
+            if (currentModalIndex >= currentModalImages.length) currentModalIndex = 0;
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            const { modalImg } = getModalElements();
+            if (modalImg) {
+                modalImg.src = currentModalImages[currentModalIndex];
+            }
+        }
     </script>
 
 </body>
-</html>
 
+</html>
